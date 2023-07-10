@@ -18,17 +18,22 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
+
+Route::get('/wizard', function () {
+    return view('default');
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
+Route::get('/table', function () {
+    return view('process.table');
+})->middleware(['auth', 'verified'])->name('table.create');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/table', [TableController::class, 'create'])->name('table');
 });
 
 require __DIR__ . '/auth.php';

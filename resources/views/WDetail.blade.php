@@ -1,58 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-    @if (Route::has('login'))
-
-    @auth
-    <section id="dashboard" class="bg-white py-16 h-screen">
-        <div class="container mx-auto px-8 items-center mt-14">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Welcome to My Website</h2>
-                    <p class="text-xl text-gray-600 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded" href="">Learn More</a>
-                </div>
-                <div>
-                    <img class="w-screen" src="https://static.vecteezy.com/system/resources/previews/003/475/012/original/confused-man-with-question-mark-concept-flat-illustration-free-vector.jpg" alt="Image">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="{{ __('add') }}" class=" py-16 h-screen add  dark:bg-yellow-100">
-        <div class="container mx-auto px-8 items-center justify-center mt-14">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-950 mb-8 text-center">Add Problem</h2>
-            <div class="container mx-auto px-8 items-center mt-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <img class="w-screen h-full mix-blend-multiply" src="https://img.freepik.com/premium-vector/people-thinking-make-decision-problem-solving-find-creative-ideas-flat-illustration_2175-3907.jpg" alt="Image">
-                    </div>
-                    <div>
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Welcome to My Website</h2>
-                        <p class="text-xl text-gray-600 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded" href="{{ route('table.create') }}">Add</a>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="history" class="bg-gray-100 py-16 h-screen">
-        <div class="container mx-auto px-8 mt-14">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">History</h2>
-
-        </div>
-    </section>
-
-    @else
-    <section id="beranda" class="h-screen">
+    <section>
         <div class="container mx-auto px-8 items-center mt-14">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div class="flex flex-col items-center gap-14">
@@ -64,9 +11,11 @@
                     <img class="w-[816px] h-[688px] left-[720px] top-[202px] " src="{{asset('/images/beranda.png')}}" />
                 </div>
             </div>
+
         </div>
     </section>
-    <section id="waspas">
+
+    <section>
         <div class="flex flex-col gap-5 container mx-auto px-8 items-center mt-20">
             <p class="w-full left-[69px] top-[1073px]  text-center text-teal-800 text-[36px] font-extrabold">Apa itu Metode WASPAS?</p>
             <p class="w-[1302px] left-[69px] top-[1148px]  text-justify text-gray-800 text-[28px] font-medium leading-10">WASPAS App menggunakan Weighted Aggregated Sum Product Assesment (WASPAS) sebagai metode perhitungan dalam pemilihan keputusan. Konsep perhitungan pada metode WASPAS, yaitu menormalisasi matriks, menghitung nilai normalisasi berdasarkan bobot, dan mengurutkan alternatif berdasarkan nilai normalisasi.</p>
@@ -121,8 +70,5 @@
         </div>
 
     </section>
-
-    @endauth
-    @endif
 
 </x-app-layout>
