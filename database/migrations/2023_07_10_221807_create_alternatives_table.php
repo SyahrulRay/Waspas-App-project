@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('project_id');
+            $table->integer('rank')->unsigned();
             $table->foreign('project_id')->references('id')->on('projects');
             $table->timestamps();
         });
