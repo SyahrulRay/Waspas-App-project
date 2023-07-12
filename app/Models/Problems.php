@@ -10,4 +10,8 @@ class Problems extends Model
     use HasFactory;
 
     protected $table = 'problems';
+
+    protected $fillable = [
+        'nameproblems', 'user_id'
+    ];
 }

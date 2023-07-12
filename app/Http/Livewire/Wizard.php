@@ -6,6 +6,7 @@ use App\Models\Alternatif;
 use App\Models\Criterias;
 use App\Models\Problems;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class Wizard extends Component
 {
@@ -37,6 +38,11 @@ class Wizard extends Component
             'nameproblems' => 'required',
         ]);
 
+        Problems::create([
+            'nameproblems' => $this->nameproblems,
+            'user_id' => Auth::user()->id
+        ]);
+
         $this->currentStep = 2;
     }
 
@@ -48,9 +54,7 @@ class Wizard extends Component
     public function secondStepSubmit()
     {
         $validatedData = $this->validate([
-            'namecriteria' => 'nullable',
-            'weight' => 'nullable',
-            'categories' => 'nullable',
+            'namealternatif' => 'required',
         ]);
 
         $this->currentStep = 3;
@@ -64,8 +68,11 @@ class Wizard extends Component
 
     public function thirdStepSubmit()
     {
+
         $validatedData = $this->validate([
-            'namealternatif' => 'required',
+            'namecriteria' => 'nullable',
+            'weight' => 'nullable',
+            'categories' => 'nullable',
         ]);
 
         $this->currentStep = 3;
@@ -86,8 +93,12 @@ class Wizard extends Component
             'weight' => $this->weight,
             'categories' => $this->categories
         ]);
+
+        $problems = new Problems();
+
         Alternatif::create([
-            'namecriteria' => $this->namealternatif
+            'namealternatif' => $this->namealternatif,
+            'project_id' => $problems->id
         ]);
 
         $this->successMessage = 'Product Created Successfully.';
@@ -105,13 +116,32 @@ class Wizard extends Component
             'categories' => 'nullable',
         ]);
 
+        $alternatif = new Alternatif();
+
         Criterias::create([
             'namecriteria' => $this->namecriteria,
             'weight' => $this->weight,
-            'categories' => $this->categories
+            'categories' => $this->categories,
+            'alter_id' => $alternatif->id
         ]);
 
-        return view('livewire.wizard');
+        $this->clearForm();
+    }
+    public function submitAlternatif()
+    {
+        $validatedData = $this->validate([
+            'namealternatif' => 'nullable'
+        ]);
+
+        $problems = new Problems();
+
+        // Alternatif::create([
+        //     'namealternatif' => $this->namealternatif,
+        //     'project_id' => $problems->id
+        // ]);
+
+
+        $this->clearForm();
     }
 
     /**
