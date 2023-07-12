@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\Wizard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,14 +22,19 @@ Route::get('/', function () {
 
 Route::get('/wizard', function () {
     return view('default');
-});
+})->name('wizard');
+
+Route::get('/problems', function () {
+    return view('example.problems');
+})->name('problems');
+
+Route::get('/result', function () {
+    return view('example.result');
+})->name('result');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/table', function () {
-    return view('process.table');
-})->middleware(['auth', 'verified'])->name('table.create');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

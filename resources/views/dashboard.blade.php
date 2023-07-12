@@ -7,35 +7,33 @@
     @if (Route::has('login'))
 
     @auth
-    <section id="dashboard" class="bg-white py-16 h-screen">
+    <section id="dashboard" class="bg-gray-100 py-16 h-screen">
         <div class="container mx-auto px-8 items-center mt-14">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Welcome to My Website</h2>
-                    <p class="text-xl text-gray-600 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded" href="">Learn More</a>
+                <div class="flex flex-col items-center gap-14">
+                    <p class=" w-[544px] h-[105px]"><span class=" text-gray-800 text-[48px] font-extrabold">Temukan </span><span class="text-teal-800 text-[52px] font-extrabold">solusi ideal</span><span class="text-gray-800 text-[52px] font-extrabold"> dari masalah Anda.</span></p>
+                    <p class="w-[575px] text-gray-800 text-[24px] font-medium leading-loose">WASPAS App adalah sistem pendukung keputusan yang menerapkan metode WASPAS. Sistem akan memberikan hasil analisis beserta solusi ideal dari beragam situasi berdasarkan kriteria dan bobot kriteria yang dimasukkan.</p>
+                    <a class="w-[393px] h-[77px] px-[3px] py-[13px] bg-teal-800 rounded-2xl justify-center items-center gap-2.5 flex text-center text-white text-[24px] font-extrabold" href="{{route('problems')}}">Lihat Contoh Keputusan</a>
                 </div>
                 <div>
-                    <img class="w-screen" src="https://static.vecteezy.com/system/resources/previews/003/475/012/original/confused-man-with-question-mark-concept-flat-illustration-free-vector.jpg" alt="Image">
+                    <img class="w-[816px] h-[688px] left-[720px] top-[202px] " src="{{asset('/images/beranda.png')}}" />
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="{{ __('add') }}" class=" py-16 h-screen add  dark:bg-yellow-100">
+    <section id="{{ __('add') }}" class=" py-16 h-screen add bg-gray-100">
         <div class="container mx-auto px-8 items-center justify-center mt-14">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-950 mb-8 text-center">Add Problem</h2>
+            <h2 class="text-[48px] font-extrabold text-gray-800 mb-8 text-center">Add Problem</h2>
             <div class="container mx-auto px-8 items-center mt-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div>
-                        <img class="w-screen h-full mix-blend-multiply" src="https://img.freepik.com/premium-vector/people-thinking-make-decision-problem-solving-find-creative-ideas-flat-illustration_2175-3907.jpg" alt="Image">
+                        <img class="w-screen h-full mix-blend-multiply" src="https://cdn3d.iconscout.com/3d/premium/thumb/male-character-with-confused-pose-4638167-3855713.png" alt="Image">
                     </div>
-                    <div>
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Welcome to My Website</h2>
-                        <p class="text-xl text-gray-600 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded" href="{{ route('table.create') }}">Add</a>
+                    <div class="flex flex-col gap-8">
+                        <p class="w-[575px] text-gray-800 text-[24px] font-medium leading-loose">WASPAS App adalah sistem pendukung keputusan yang menerapkan metode WASPAS. Sistem akan memberikan hasil analisis beserta solusi ideal dari beragam situasi berdasarkan kriteria dan bobot kriteria yang dimasukkan.</p>
+                        <a class="w-[393px] h-[77px] px-[3px] py-[13px] bg-teal-800 rounded-2xl justify-center items-center gap-2.5 flex text-center text-white text-[24px] font-extrabold" href="{{route('wizard')}}">Create Problems</a>
+
                     </div>
 
                 </div>
@@ -46,7 +44,7 @@
 
     <section id="history" class="bg-gray-100 py-16 h-screen">
         <div class="container mx-auto px-8 mt-14">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">History</h2>
+            <h2 class="text-[48px] font-extrabold text-gray-800 mb-8 text-center">History</h2>
 
         </div>
     </section>
@@ -58,7 +56,7 @@
                 <div class="flex flex-col items-center gap-14">
                     <p class=" w-[544px] h-[105px]"><span class=" text-gray-800 text-[48px] font-extrabold">Temukan </span><span class="text-teal-800 text-[52px] font-extrabold">solusi ideal</span><span class="text-gray-800 text-[52px] font-extrabold"> dari masalah Anda.</span></p>
                     <p class="w-[575px] text-gray-800 text-[24px] font-medium leading-loose">WASPAS App adalah sistem pendukung keputusan yang menerapkan metode WASPAS. Sistem akan memberikan hasil analisis beserta solusi ideal dari beragam situasi berdasarkan kriteria dan bobot kriteria yang dimasukkan.</p>
-                    <a class="w-[393px] h-[77px] px-[3px] py-[13px] bg-teal-800 rounded-2xl justify-center items-center gap-2.5 flex text-center text-white text-[24px] font-extrabold">Lihat Contoh Keputusan</a>
+                    <a class="w-[393px] h-[77px] px-[3px] py-[13px] bg-teal-800 rounded-2xl justify-center items-center gap-2.5 flex text-center text-white text-[24px] font-extrabold" href="{{route('problems')}}">Lihat Contoh Keputusan</a>
                 </div>
                 <div>
                     <img class="w-[816px] h-[688px] left-[720px] top-[202px] " src="{{asset('/images/beranda.png')}}" />
@@ -67,7 +65,7 @@
         </div>
     </section>
     <section id="waspas">
-        <div class="flex flex-col gap-5 container mx-auto px-8 items-center mt-20">
+        <div class="flex flex-col gap-5 container mx-auto px-8 items-center m-10 mt-20">
             <p class="w-full left-[69px] top-[1073px]  text-center text-teal-800 text-[36px] font-extrabold">Apa itu Metode WASPAS?</p>
             <p class="w-[1302px] left-[69px] top-[1148px]  text-justify text-gray-800 text-[28px] font-medium leading-10">WASPAS App menggunakan Weighted Aggregated Sum Product Assesment (WASPAS) sebagai metode perhitungan dalam pemilihan keputusan. Konsep perhitungan pada metode WASPAS, yaitu menormalisasi matriks, menghitung nilai normalisasi berdasarkan bobot, dan mengurutkan alternatif berdasarkan nilai normalisasi.</p>
             <div>

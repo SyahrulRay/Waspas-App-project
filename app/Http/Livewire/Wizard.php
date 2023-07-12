@@ -2,13 +2,18 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\ProductModel;
+use App\Models\Alternatif;
+use App\Models\Criterias;
+use App\Models\Problems;
 use Livewire\Component;
 
 class Wizard extends Component
 {
     public $currentStep = 1;
-    public $name, $amount, $description, $status = 1, $stock;
+    public $namecriteria = [];
+    public $weight = [];
+    public $categories = [];
+    public $nameproblems, $namealternatif;
     public $successMessage = '';
 
     /**
@@ -29,9 +34,7 @@ class Wizard extends Component
     public function firstStepSubmit()
     {
         $validatedData = $this->validate([
-            'name' => 'required|unique:products',
-            'amount' => 'required|numeric',
-            'description' => 'required',
+            'nameproblems' => 'required',
         ]);
 
         $this->currentStep = 2;
@@ -45,8 +48,24 @@ class Wizard extends Component
     public function secondStepSubmit()
     {
         $validatedData = $this->validate([
-            'stock' => 'required',
-            'status' => 'required',
+            'namecriteria' => 'nullable',
+            'weight' => 'nullable',
+            'categories' => 'nullable',
+        ]);
+
+        $this->currentStep = 3;
+    }
+
+    /**
+     * Write code on Method 
+     *
+     * @return response()
+     */
+
+    public function thirdStepSubmit()
+    {
+        $validatedData = $this->validate([
+            'namealternatif' => 'required',
         ]);
 
         $this->currentStep = 3;
@@ -59,12 +78,16 @@ class Wizard extends Component
      */
     public function submitForm()
     {
-        ProductModel::create([
-            'name' => $this->name,
-            'amount' => $this->amount,
-            'description' => $this->description,
-            'stock' => $this->stock,
-            'status' => $this->status,
+        Problems::create([
+            'name' => $this->name
+        ]);
+        Criterias::create([
+            'namecriteria' => $this->namecriteria,
+            'weight' => $this->weight,
+            'categories' => $this->categories
+        ]);
+        Alternatif::create([
+            'namecriteria' => $this->namealternatif
         ]);
 
         $this->successMessage = 'Product Created Successfully.';
@@ -72,6 +95,23 @@ class Wizard extends Component
         $this->clearForm();
 
         $this->currentStep = 1;
+    }
+
+    public function submitCriteria()
+    {
+        $validatedData = $this->validate([
+            'namecriteria' => 'nullable',
+            'weight' => 'nullable',
+            'categories' => 'nullable',
+        ]);
+
+        Criterias::create([
+            'namecriteria' => $this->namecriteria,
+            'weight' => $this->weight,
+            'categories' => $this->categories
+        ]);
+
+        return view('livewire.wizard');
     }
 
     /**
@@ -91,10 +131,10 @@ class Wizard extends Component
      */
     public function clearForm()
     {
-        $this->name = '';
-        $this->amount = '';
-        $this->description = '';
-        $this->stock = '';
-        $this->status = 1;
+        $this->namecriteria = '';
+        $this->nameproblems = '';
+        $this->weight = '';
+        $this->categories = '';
+        $this->namealternatif = '';
     }
 }
