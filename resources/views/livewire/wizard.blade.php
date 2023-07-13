@@ -42,26 +42,28 @@
                 <div class="form-group justify-center items-center">
                     <a href="" class="w-full text-gray-800 border bg-blue-500 hover:bg-blue-600 hover:text-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 " data-target="#addAlternatif" data-toggle="modal" type="button">Add Alternatif</a>
                 </div>
-                <div class="mb-4">
-                    <label for="criteria" class="block text-gray-700 font-bold mb-2">Alternatif:</label>
-                    <input type="text" id="criteria" name="criteria" wire:model='namealternatif' class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                    @error('namealternatif') <span class="error">{{ $message }}</span> @enderror
-                </div>
-
-                <div class="flex justify-end">
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-400" wire:click="submitAlternatif">Submit</button>
-                </div>
                 <div>
                     <table class="table table-bordered text-center">
-                        <thead>
+                        <thead class="w-full h-[48px] text-gray-300  bg-teal-800">
                             <tr>
                                 <th>Alternatif</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
+                        @foreach($alternatifTable as $alt)
+                        <tr>
+                            <th>{{$alt->namealternatif}}</th>
+                            <th class="w-full">
+                                <a href="" class="m-4 hover:text-blue-700" data-target="#editAlternatif" data-toggle="modal"><i class="fa fa-pen" aria-hidden="true"></i></a>
+                                <a href="" class="m-4 hover:text-red-600" wire:click="deleteAlternatif"><i class="fa fa-trash" aria-hidden="true"></i></a>
+
+                            </th>
+                        </tr>
+                        @endforeach
                     </table>
                 </div>
                 <div class="flex flex-row justify-center items-center gap-4">
-                    <button class="btn btn-danger nextBtn btn-lg pull-righ text-gray-700" t" type="button" wire:click="back(1)">Back</button>
+                    <button class="btn btn-danger nextBtn btn-lg pull-righ text-gray-700" type="button" wire:click="back(1)">Back</button>
                     <button class="btn btn-primary nextBtn btn-lg pull-right text-gray-700" type="button" wire:click="secondStepSubmit">Next</button>
 
                 </div>
@@ -74,39 +76,28 @@
                 <div class="form-group justify-center items-center">
                     <a href="" class="w-full text-gray-800 border bg-blue-500 hover:bg-blue-600 hover:text-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 " data-target="#addKriteria" data-toggle="modal" type="button">Add Kriteria</a>
                 </div>
-                <div class="mb-4">
-                    <label for="criteria" class="block text-gray-700 font-bold mb-2">Criteria:</label>
-                    <input type="text" wire:model='namecriteria' id="criteria" name="criteria" class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                    @error('namecriteria') <span class="error">{{ $message }}</span> @enderror
-                </div>
-                <div class="mb-4">
-                    <label for="weight" class="block text-gray-700 font-bold mb-2">Weight:</label>
-                    <input type="number" step="0.01" wire:model='weight' id="weight" name="weight" class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                    @error('weight') <span class="error">{{ $message }}</span> @enderror
-                </div>
-
-                <div class="mb-4">
-                    <label for="category" class="block text-gray-700 font-bold mb-2">Category:</label>
-                    <select wire:model='categories' id="category" name="category" class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                        <option value="" disabled selected>Select category</option>
-                        <option value="benefit">Benefit</option>
-                        <option value="cost">Cost</option>
-                    </select>
-                    @error('categories') <span class="error">{{ $message }}</span> @enderror
-                </div>
-
-                <div class="flex justify-end">
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-400" wire:click="submitCriteria">Submit</button>
-                </div>
                 <div>
                     <table class="table table-bordered text-center">
-                        <thead>
+                        <thead class="xw-full h-[48px] text-gray-300  bg-teal-800">
                             <tr>
                                 <th>Criteria</th>
                                 <th>Weight</th>
                                 <th>Categories</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
+                        @foreach($criteriaTable as $crit)
+                        <tr>
+                            <th>{{$crit->namecriteria}}</th>
+                            <th>{{$crit->weight}}</th>
+                            <th>{{$crit->categories}}</th>
+                            <th class="w-full">
+                                <a href="" class="m-4 hover:text-blue-700" data-target="#editCriteria" data-toggle="modal"><i class="fa fa-pen" aria-hidden="true"></i></a>
+                                <a href="" class="m-4 hover:text-red-600" wire:click="deleteCriteria"><i class="fa fa-trash" aria-hidden="true"></i></a>
+
+                            </th>
+                        </tr>
+                        @endforeach
                     </table>
                 </div>
 
@@ -120,4 +111,6 @@
 
     @include('livewire.modal.criteria')
     @include('livewire.modal.alternatif')
+    @include('livewire.modal.alternatifedit')
+    @include('livewire.modal.criteriaedit')
 </div>

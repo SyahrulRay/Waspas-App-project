@@ -16,6 +16,11 @@ class Wizard extends Component
     public $categories = [];
     public $nameproblems, $namealternatif;
     public $successMessage = '';
+    public $alternatifTable = [];
+    public $criteriaTable = [];
+    public $editalternatif;
+
+
 
     /**
      * Write code on Method
@@ -24,7 +29,23 @@ class Wizard extends Component
      */
     public function render()
     {
+        $problems = Problems::latest()->first();
+        $problems_id = $problems['id'];
+        $alternatif = Alternatif::latest()->first();
+        $alter_id = $alternatif['id'];
+        $this->alternatifTable = Alternatif::where('project_id', $problems_id)->get();
+        $this->criteriaTable = Criterias::where('alter_id', $alter_id)->get();
         return view('livewire.wizard');
+    }
+
+    public function boot()
+    {
+        $problems = Problems::latest()->first();
+        $problems_id = $problems['id'];
+        $alternatif = Alternatif::latest()->first();
+        $alter_id = $alternatif['id'];
+        $this->alternatifTable = Alternatif::where('project_id', $problems_id)->get();
+        $this->criteriaTable = Criterias::where('alter_id', $alter_id)->get();
     }
 
     /**
@@ -54,7 +75,7 @@ class Wizard extends Component
     public function secondStepSubmit()
     {
         $validatedData = $this->validate([
-            'namealternatif' => 'required',
+            'namealternatif' => 'nullable',
         ]);
 
         $this->currentStep = 3;
@@ -115,14 +136,20 @@ class Wizard extends Component
             'weight' => 'nullable',
             'categories' => 'nullable',
         ]);
-
-        $alternatif = new Alternatif();
+        $problems = Problems::latest()->first();
+        $problems_id = $problems['id'];
+        $alternatif = Alternatif::latest()->first();
+        $alter_id = $alternatif['id'];
+        $this->alternatifTable = Alternatif::where('project_id', $problems_id)->get();
+        $this->criteriaTable = Criterias::where('alter_id', $alter_id)->get();
+        $alternatif = Alternatif::latest()->first();
+        $alter_id = $alternatif['id'];
 
         Criterias::create([
             'namecriteria' => $this->namecriteria,
             'weight' => $this->weight,
             'categories' => $this->categories,
-            'alter_id' => $alternatif->id
+            'alter_id' => value($alter_id)
         ]);
 
         $this->clearForm();
@@ -132,16 +159,30 @@ class Wizard extends Component
         $validatedData = $this->validate([
             'namealternatif' => 'nullable'
         ]);
+        $problems = Problems::latest()->first();
+        $problems_id = $problems['id'];
+        $alternatif = Alternatif::latest()->first();
+        $alter_id = $alternatif['id'];
+        $this->alternatifTable = Alternatif::where('project_id', $problems_id)->get();
+        $this->criteriaTable = Criterias::where('alter_id', $alter_id)->get();
+        $problems = Problems::latest()->first();
+        $problems_id = $problems['id'];
 
-        $problems = new Problems();
-
-        // Alternatif::create([
-        //     'namealternatif' => $this->namealternatif,
-        //     'project_id' => $problems->id
-        // ]);
-
+        Alternatif::create([
+            'namealternatif' => $this->namealternatif,
+            'project_id' => value($problems_id),
+        ]);
 
         $this->clearForm();
+    }
+
+    public function deleteCriteria()
+    {
+       
+    }
+    public function deleteAlternatif()
+    {
+        
     }
 
     /**

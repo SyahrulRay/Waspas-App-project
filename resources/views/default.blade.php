@@ -9,6 +9,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="{{ asset('wizard.css') }}" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -57,7 +58,7 @@
         </nav>
     </div>
 
-    <div class="container">
+    <div wire:ignore class="container">
 
         <div class="card m-12">
             <div class="card-body  mt-32">

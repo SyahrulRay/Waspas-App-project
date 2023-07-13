@@ -1,5 +1,5 @@
 <form>
-    <div class="modal fade text-left" id="addKriteria" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade text-left" id="editKriteria" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg " role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="flex justify-end">
-                        <button data-dismiss="modal" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-400" wire:click="submitCriteria">Submit</button>
+                        <button data-dismiss="modal" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-400" wire:click="updateCriteria">Submit</button>
                     </div>
                 </div>
             </div>

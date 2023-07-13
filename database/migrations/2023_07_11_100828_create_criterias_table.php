@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('criterias', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('namecriteria')->nullable();
             $table->float('weight')->nullable();
             $table->string('categories')->nullable();
             $table->timestamps();

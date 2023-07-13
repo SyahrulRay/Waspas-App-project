@@ -12,6 +12,6 @@ class Problems extends Model
     protected $table = 'problems';
 
     protected $fillable = [
-        'nameproblems', 'user_id'
+        'id', 'nameproblems', 'user_id'
     ];
 }
