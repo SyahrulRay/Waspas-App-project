@@ -12,6 +12,6 @@ class Criterias extends Model
     protected $table = 'criterias';
 
     protected $fillable = [
-        'namecriteria', 'weight', 'categories', 'alter_id'
+        'namecriteria', 'weight', 'categories','values', 'alter_id'
     ];
 }

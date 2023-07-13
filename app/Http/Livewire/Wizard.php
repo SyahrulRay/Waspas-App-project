@@ -14,6 +14,7 @@ class Wizard extends Component
     public $namecriteria = [];
     public $weight = [];
     public $categories = [];
+    public $value = [];
     public $nameproblems, $namealternatif;
     public $successMessage = '';
     public $alternatifTable = [];
@@ -53,47 +54,68 @@ class Wizard extends Component
      *
      * @return response()
      */
+    // public function firstStepSubmit()
+    // {
+    //     $validatedData = $this->validate([
+    //         'nameproblems' => 'required',
+    //     ]);
+
+    //     Problems::create([
+    //         'nameproblems' => $this->nameproblems,
+    //         'user_id' => Auth::user()->id
+    //     ]);
+
+    //     $this->currentStep = 2;
+    // }
+
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+
+    // public function TambahProject()
+    // {
+    //     $validatedData = $this->validate([
+    //         'nameproblems' => 'required',
+    //     ]);
+
+    //     Problems::create([
+    //         'nameproblems' => $this->nameproblems,
+    //         'user_id' => Auth::user()->id
+    //     ]);
+
+    //     return view('livewire.wizard');
+    // }
+
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
     public function firstStepSubmit()
     {
         $validatedData = $this->validate([
-            'nameproblems' => 'required',
-        ]);
-
-        Problems::create([
-            'nameproblems' => $this->nameproblems,
-            'user_id' => Auth::user()->id
+            'namealternatif' => 'nullable',
         ]);
 
         $this->currentStep = 2;
     }
 
     /**
-     * Write code on Method 
+     * Write code on Method
      *
      * @return response()
      */
+
     public function secondStepSubmit()
-    {
-        $validatedData = $this->validate([
-            'namealternatif' => 'nullable',
-        ]);
-
-        $this->currentStep = 3;
-    }
-
-    /**
-     * Write code on Method 
-     *
-     * @return response()
-     */
-
-    public function thirdStepSubmit()
     {
 
         $validatedData = $this->validate([
             'namecriteria' => 'nullable',
             'weight' => 'nullable',
             'categories' => 'nullable',
+            'value' => 'nullable',
         ]);
 
         $this->currentStep = 3;
@@ -135,6 +157,7 @@ class Wizard extends Component
             'namecriteria' => 'nullable',
             'weight' => 'nullable',
             'categories' => 'nullable',
+            'value' => 'nullable',
         ]);
         $problems = Problems::latest()->first();
         $problems_id = $problems['id'];
@@ -149,6 +172,7 @@ class Wizard extends Component
             'namecriteria' => $this->namecriteria,
             'weight' => $this->weight,
             'categories' => $this->categories,
+            'values' => $this->value,
             'alter_id' => value($alter_id)
         ]);
 
@@ -178,11 +202,9 @@ class Wizard extends Component
 
     public function deleteCriteria()
     {
-       
     }
     public function deleteAlternatif()
     {
-        
     }
 
     /**

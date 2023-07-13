@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddProblemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Wizard;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('dashboard');
 });
+
+Route::get('/addproblems', [AddProblemController::class, 'index'])->name('addproblems.index');
+Route::post('/addproblems', [AddProblemController::class, 'store'])->name('addproblems.store');
 
 
 Route::get('/wizard', function () {
