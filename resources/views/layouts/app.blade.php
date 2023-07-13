@@ -25,7 +25,7 @@
 </head>
 
 <body class="font-sans antialiased overscroll-y-contain ">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="min-h-screen bg-gray-100 dark:bg-pink-50 gap-8">
         @include('layouts.navigation')
 
 
@@ -34,6 +34,18 @@
             {{ $slot }}
         </main>
     </div>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-8">
+            <div class="flex justify-between items-center">
+                <p>&copy; 2023 My Personal Website. All rights reserved.</p>
+                <ul class="space-x-4">
+                    <li class="inline-block"><a class="text-gray-400 hover:text-white" href="#">Privacy Policy</a></li>
+                    <li class="inline-block"><a class="text-gray-400 hover:text-white" href="#">Terms of Service</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
