@@ -28,6 +28,10 @@ Route::get('/wizard', function () {
     return view('default');
 })->name('wizard');
 
+Route::get('/resultHistory', function () {
+    return view('result');
+})->name('resultHistory');
+
 Route::get('/problems', function () {
     return view('example.problems');
 })->name('problems');

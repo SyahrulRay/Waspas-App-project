@@ -55,10 +55,29 @@
             </section>
 
             <section id="history" class="bg-gray-100 py-16 h-screen">
-                <div class="container mx-auto px-8 mt-14">
+                <div class="container mx-auto px-8 mt-20">
                     <h2 class="text-[48px] font-extrabold text-gray-800 mb-8 text-center">History</h2>
-
                 </div>
+                <div class="container mx-auto px-4 py-8">
+                    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                        <a href="{{ route('resultHistory') }}" class="bg-white rounded-lg shadow-lg p-6">
+                            <h2 class="text-xl font-bold mb-4">Event 1</h2>
+                            <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel luctus
+                                nunc, id lacinia nulla.</p>
+                        </a>
+                        <a href="{{ route('resultHistory') }}" class="bg-white rounded-lg shadow-lg p-6">
+                            <h2 class="text-xl font-bold mb-4">Event 2</h2>
+                            <p class="text-gray-700">Phasellus sagittis finibus lorem nec feugiat. Sed a ultrices tellus,
+                                sed luctus neque.</p>
+                        </a>
+                        <a href="{{ route('resultHistory') }}" class="bg-white rounded-lg shadow-lg p-6">
+                            <h2 class="text-xl font-bold mb-4">Event 3</h2>
+                            <p class="text-gray-700">Integer at ipsum ut arcu tincidunt interdum. Etiam eu finibus enim, ac
+                                tempus neque.</p>
+                        </a>
+                        <!-- Add more event cards as needed -->
+                    </div>
+                    </main>
             </section>
         @else
             <section id="beranda" class="h-screen">

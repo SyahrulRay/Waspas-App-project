@@ -121,7 +121,7 @@
                         </div>
                         <div>
                             <a class="btn btn-primary text-gray-600 w-full h-12 nextBtn btn-lg pull-right"
-                                href="" type="submit">Lihat Hasil</a>
+                                href="{{ route('resultHistory') }}" type="submit">Lihat Hasil</a>
                         </div>
                     </div>
                 </div>
